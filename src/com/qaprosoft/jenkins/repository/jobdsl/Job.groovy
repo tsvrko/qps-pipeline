@@ -275,7 +275,7 @@ class Job {
     
     static String listToString(currentSuite, parameterName) {
         def list = getGenericSplit(currentSuite, parameterName)
-        def prepList = '['
+        def prepList = 'return ['
 
         if (!list.isEmpty()) {
             for (String l : list) {
