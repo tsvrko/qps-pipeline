@@ -25,6 +25,19 @@ class Job {
             /** Properties & Parameters Area **/
             parameters {
                 choiceParam('env', getEnvironments(currentSuite), 'Environment to test against.')
+                        
+                if (currentSuite.toXml().contains("jenkinsGroups")) {
+                	activeChoiceParam('groups') {
+            			description('Please select test group(s) to run')
+			            filterable()
+            			choiceType('MULTI_SELECT')
+			            groovyScript {
+            			    script(getGenericSplit(currentSuite, "jenkinsGroups"))
+		                	fallbackScript('"return['error']"')
+        		    	}
+        		    }
+		        }
+                
                 booleanParam('fork', false, "Reuse forked repository for ${project} project.")
 
                 def defaultMobilePool = currentSuite.getParameter("jenkinsMobileDefaultPool")
