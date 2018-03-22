@@ -32,7 +32,7 @@ class Job {
 			            filterable()
             			choiceType('MULTI_SELECT')
 			            groovyScript {
-            			    script(getGenericSplit(currentSuite, "jenkinsGroups"))
+            			    script(listToString(currentSuite, "jenkinsGroups"))
 		                	fallbackScript("return['error']")
         		    	}
         		    }
@@ -271,6 +271,22 @@ class Job {
         }
 
         return prepCustomFields
+    }
+    
+    static String listToString(currentSuite, parameterName) {
+        def list = getGenericSplit(currentSuite, parameterName)
+        def prepList = '['
+
+        if (!list.isEmpty()) {
+            for (String l : list) {
+                prepList = prepList + '"' + l + '", '
+            }
+            prepList = prepList.take(prepList.length() - 2)
+        }
+        
+        prepList = prepList + ']'
+
+        return prepList
     }
 
     static List<String> getGenericSplit(currentSuite, parameterName) {
