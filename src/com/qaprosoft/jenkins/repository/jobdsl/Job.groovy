@@ -33,7 +33,7 @@ class Job {
             			choiceType('MULTI_SELECT')
 			            groovyScript {
             			    script(getGenericSplit(currentSuite, "jenkinsGroups"))
-		                	fallbackScript('"return['error']"')
+		                	fallbackScript("return['error']")
         		    	}
         		    }
 		        }
