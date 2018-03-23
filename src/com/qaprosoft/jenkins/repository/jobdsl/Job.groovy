@@ -33,7 +33,7 @@ class Job {
 			            filterable()
             			choiceType('MULTI_SELECT')
 			            groovyScript {
-			            	script('["choice1", "choice2"]')
+			            	script('return ["Sao Paulo", "Rio de Janeiro"]')
             			    /** script(listToString(currentSuite, "jenkinsGroups")) **/
 		                	fallbackScript("return ['error']")
         		    	}
