@@ -25,15 +25,17 @@ class Job {
             /** Properties & Parameters Area **/
             parameters {
                 choiceParam('env', getEnvironments(currentSuite), 'Environment to test against.')
-                        
+                
+                /** Requires Active Choices Plug-in v1.2+ **/       
                 if (currentSuite.toXml().contains("jenkinsGroups")) {
                 	activeChoiceParam('groups') {
             			description('Please select test group(s) to run')
 			            filterable()
             			choiceType('MULTI_SELECT')
 			            groovyScript {
-            			    script(listToString(currentSuite, "jenkinsGroups"))
-		                	fallbackScript("return['error']")
+			            	script('["choice1", "choice2"]')
+            			    /** script(listToString(currentSuite, "jenkinsGroups")) **/
+		                	fallbackScript("return ['error']")
         		    	}
         		    }
 		        }
