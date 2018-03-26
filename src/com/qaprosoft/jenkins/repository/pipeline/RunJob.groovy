@@ -370,6 +370,12 @@ def runTests(Map jobParameters) {
             echo "Enabling jacoco report generation goals."
             mvnBaseGoals += " jacoco:instrument"
         }
+        
+        if (params["mavenProfile"] != null) {
+        	def mvnProfile = ("$ENV_VALUE".equals(params["mavenProfile"])) ? params["env"] : params["mavenProfile"]
+            echo "Adding maven profile: " + mvnProfile
+            mvnBaseGoals += (" -P " + mvnProfile)
+        }
 
         mvnBaseGoals += " ${overrideFields}"
         mvnBaseGoals = mvnBaseGoals.replace(", ", ",")
