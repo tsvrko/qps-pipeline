@@ -278,11 +278,11 @@ class Job {
         def deviceList = ["DefaultPool", "ANY", "Google_Nexus_7", "Google_Pixel", "Google_Pixel_XL", "One_M8"]
 	println(deviceList)
 	println "test message for sync2"
-	def json = new JsonSlurper().parse("https://smule.qaprosoft.com/grid/admin/ProxyInfo".toURL())
-	println json
-	json.each {
-		println "platform: " + it.configuration.capabilities.platform + "; device: " + it.configuration.capabilities.browserName
-	}
+	//def json = new JsonSlurper().parse("https://smule.qaprosoft.com/grid/admin/ProxyInfo".toURL())
+	//println json
+	//json.each {
+	//	println "platform: " + it.configuration.capabilities.platform + "; device: " + it.configuration.capabilities.browserName
+	//}
         return deviceList
     }
 
