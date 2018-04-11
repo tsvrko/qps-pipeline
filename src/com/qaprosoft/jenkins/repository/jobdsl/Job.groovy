@@ -100,7 +100,7 @@ class Job {
 
 				def gitBranch = "gc_GIT_BRANCH"
                 if (currentSuite.toXml().contains("jenkinsDefaultGitBranch")) {
-                	threadCount = currentSuite.getParameter("jenkinsDefaultGitBranch")
+                	gitBranch = currentSuite.getParameter("jenkinsDefaultGitBranch")
                 }
                 configure addExtensibleChoice('branch', gitBranch, "Select a GitHub Testing Repository Branch to run against", "master")
                 configure addHiddenParameter('project', '', project)
