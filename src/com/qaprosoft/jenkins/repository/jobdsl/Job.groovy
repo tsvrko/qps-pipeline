@@ -128,7 +128,7 @@ class Job {
 
 				def retryCount = [0, 1, 2, 3]
                 if (currentSuite.toXml().contains("jenkinsDefaultRetryCount")) {
-                	retryCount = currentSuite.getParameter("jenkinsDefaultRetryCount")
+                	retryCount = Eval.me(currentSuite.getParameter("jenkinsDefaultRetryCount"))
                 }
                 choiceParam('retry_count', retryCount, 'Number of Times to Retry a Failed Test')
                 booleanParam('develop', false, 'Check to execute test without registration to Zafira')
