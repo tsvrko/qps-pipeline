@@ -64,8 +64,8 @@ class Job {
 			// WEB tests specific
                         configure addExtensibleChoice('custom_capabilities', 'gc_CUSTOM_CAPABILITIES', "Set to NULL to run against Selenium Grid on Jenkin's Slave else, select an option for Browserstack.", 'NULL')
                         configure addExtensibleChoice('browser', 'gc_BROWSER', 'Select a browser to run tests against.', 'chrome')
-                        booleanParam('auto_screenshot', true, 'Generate screenshots automatically during the test')
-                        booleanParam('keep_all_screenshots', true, 'Keep screenshots even if the tests pass')
+                        booleanParam('auto_screenshot', false, 'Generate screenshots automatically during the test')
+                        booleanParam('keep_all_screenshots', false, 'Keep screenshots even if the tests pass')
                         booleanParam('enableVNC', true, 'Selenoid only to enable VNC sessions')
                         configure addHiddenParameter('platform', '', '*')
                         break;
