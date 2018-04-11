@@ -98,11 +98,11 @@ class Job {
                         break;
                 }
 
-				def gitBranch = "gc_GIT_BRANCH"
+				def gitBranch = "master"
                 if (currentSuite.toXml().contains("jenkinsDefaultGitBranch")) {
                 	gitBranch = currentSuite.getParameter("jenkinsDefaultGitBranch")
                 }
-                configure addExtensibleChoice('branch', gitBranch, "Select a GitHub Testing Repository Branch to run against", "master")
+                configure addExtensibleChoice('branch', "gc_GIT_BRANCH", "Select a GitHub Testing Repository Branch to run against", gitBranch)
                 configure addHiddenParameter('project', '', project)
                 configure addHiddenParameter('sub_project', '', sub_project)
                 configure addHiddenParameter('zafira_project', '', zafira_project)
