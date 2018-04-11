@@ -98,7 +98,11 @@ class Job {
                         break;
                 }
 
-                configure addExtensibleChoice('branch', "gc_GIT_BRANCH", "Select a GitHub Testing Repository Branch to run against", "master")
+				def gitBranch = "gc_GIT_BRANCH"
+                if (currentSuite.toXml().contains("jenkinsDefaultGitBranch")) {
+                	threadCount = currentSuite.getParameter("jenkinsDefaultGitBranch")
+                }
+                configure addExtensibleChoice('branch', gitBranch, "Select a GitHub Testing Repository Branch to run against", "master")
                 configure addHiddenParameter('project', '', project)
                 configure addHiddenParameter('sub_project', '', sub_project)
                 configure addHiddenParameter('zafira_project', '', zafira_project)
@@ -122,7 +126,11 @@ class Job {
                     configure addHiddenParameter('failure_email_list', '', '')
                 }
 
-                choiceParam('retry_count', [0, 1, 2, 3], 'Number of Times to Retry a Failed Test')
+				def retryCount = [0, 1, 2, 3]
+                if (currentSuite.toXml().contains("jenkinsDefaultRetryCount")) {
+                	retryCount = currentSuite.getParameter("jenkinsDefaultRetryCount")
+                }
+                choiceParam('retry_count', retryCount, 'Number of Times to Retry a Failed Test')
                 booleanParam('develop', false, 'Check to execute test without registration to Zafira')
                 booleanParam('rerun_failures', false, 'During \"Rebuild\" pick it to execute only failed cases')
                 def customFields = getCustomFields(currentSuite)
