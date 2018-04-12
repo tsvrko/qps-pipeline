@@ -420,6 +420,7 @@ def setTestResults() {
     //Need to do a forced failure here in case the report doesn't have PASSED or PASSED KNOWN ISSUES in it.
     //TODO: hardoced path here!
     checkReport = readFile("./reports/qa/emailable-report.html")
+    echo "report contents: " + checkReport
     if (!checkReport.contains("PASSED:") && !checkReport.contains("PASSED (known issues):") && !checkReport.contains("SKIP_ALL:")) {
         echo "Unable to Find (Passed) or (Passed Known Issues) within the eTAF Report."
         currentBuild.result = 'FAILURE'
