@@ -397,7 +397,7 @@ def runTests(Map jobParameters) {
         }
 
 	this.publishJacocoReport();
-        this.setTestResults()
+        //this.setTestResults()
     }
 }
 
