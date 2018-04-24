@@ -379,6 +379,11 @@ def runTests(Map jobParameters) {
             echo "Enabling jacoco report generation goals."
             mvnBaseGoals += " jacoco:instrument"
         }
+        
+        if (params["deploy_to_local_repo"] != null && "${deploy_to_local_repo}".equalsIgnoreCase("true")) {
+            echo "Enabling deployment of tests jar to local repo."
+            mvnBaseGoals += " install"
+        }
 
         mvnBaseGoals += " ${overrideFields}"
         mvnBaseGoals = mvnBaseGoals.replace(", ", ",")
@@ -397,7 +402,7 @@ def runTests(Map jobParameters) {
         }
 
 	this.publishJacocoReport();
-        //this.setTestResults()
+        this.setTestResults()
     }
 }
 
@@ -419,7 +424,15 @@ def buildOutGoals(Map<String, String> goalMap, currentBuild) {
 def setTestResults() {
     //Need to do a forced failure here in case the report doesn't have PASSED or PASSED KNOWN ISSUES in it.
     //TODO: hardoced path here!
-    checkReport = readFile("./reports/qa/emailable-report.html")
+    def filePath = "./reports/qa/emailable-report.html"
+    def file = new File(filePath)
+    if (!file.exists()) {
+    	echo "File doesn't exist: " + filePath
+    	echo "Setting build status to FAILURE"
+        currentBuild.result = 'FAILURE'
+        return
+    }
+    checkReport = readFile(filePath)
     echo "report contents: " + checkReport
     if (!checkReport.contains("PASSED:") && !checkReport.contains("PASSED (known issues):") && !checkReport.contains("SKIP_ALL:")) {
         echo "Unable to Find (Passed) or (Passed Known Issues) within the eTAF Report."
