@@ -14,7 +14,7 @@ def runJob() {
 
             this.repoClone()
 
-            this.getResources()
+            //this.getResources()
 
 	    if (params["device"] != null && !params["device"].isEmpty() && !params["device"].equals("NULL")) {
 		//TODO: test mobile goals appending as this risky change can't be tested now!
@@ -380,11 +380,11 @@ def runTests(Map jobParameters) {
         if (isUnix()) {
             suiteNameForUnix = "${suite}".replace("\\", "/")
             echo "Suite for Unix: ${suiteNameForUnix}"
-            sh "'mvn' -B ${mvnBaseGoals} -Dsuite=${suiteNameForUnix} -Dzafira_report_folder=./reports/qa -Dreport_url=$JOB_URL$BUILD_NUMBER/eTAF_Report"
+            sh "'mvn' -U -B ${mvnBaseGoals} -Dsuite=${suiteNameForUnix} -Dzafira_report_folder=./reports/qa -Dreport_url=$JOB_URL$BUILD_NUMBER/eTAF_Report"
         } else {
             suiteNameForWindows = "${suite}".replace("/", "\\")
             echo "Suite for Windows: ${suiteNameForWindows}"
-            bat "mvn ${mvnBaseGoals} -Dsuite=${suiteNameForWindows} -Dzafira_report_folder=./reports/qa -Dreport_url=$JOB_URL$BUILD_NUMBER/eTAF_Report"
+            bat "mvn -U -B ${mvnBaseGoals} -Dsuite=${suiteNameForWindows} -Dzafira_report_folder=./reports/qa -Dreport_url=$JOB_URL$BUILD_NUMBER/eTAF_Report"
         }
 
 	this.publishJacocoReport();
