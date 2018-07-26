@@ -2,14 +2,15 @@ package com.qaprosoft.jenkins.repository.jobdsl.factory
 
 public class JobFactory {
 
-    def _dslFactory
+    protected def dslFactory
 
     JobFactory(dslFactory){
-        _dslFactory = dslFactory
+        this.dslFactory = dslFactory
+        this.binding = binding
     }
 
     def myJob(_name, _description) {
-        return _dslFactory.freeStyleJob(_name){
+        return dslFactory.freeStyleJob(_name){
             description "DSL MANAGED: - $_description"
             logRotator { numToKeep 100 }
         }

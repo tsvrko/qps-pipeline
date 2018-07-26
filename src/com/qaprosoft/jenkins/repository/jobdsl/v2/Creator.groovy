@@ -1,4 +1,5 @@
 package com.qaprosoft.jenkins.repository.jobdsl.v2
+import com.qaprosoft.jenkins.repository.jobdsl.factory.BuildJobFactory
 
 @Grab('org.testng:testng:6.8.8')
 
@@ -15,6 +16,12 @@ class Creator {
 	public Creator(context) {
 		this.context = context
 		this.binding = context.binding
+	}
+
+	void createFactoryJob() {
+		def buildJobFactory = new BuildJobFactory(this)
+		buildJobFactory.emptyJob("Empty job", "First factory job")
+		buildJobFactory.jobWithParameter("Job with parameter", "First parametrized job")
 	}
 
 	void createJob() {
