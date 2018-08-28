@@ -1,9 +1,12 @@
 package com.qaprosoft
 
+import com.cloudbees.groovy.cps.NonCPS
+
 class Logger {
     // Default standard output
     private static out = System.out
 
+    @NonCps
     public static setOutput(out) {
         this.out = out
     }
