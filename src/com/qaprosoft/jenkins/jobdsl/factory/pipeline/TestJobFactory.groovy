@@ -1,5 +1,6 @@
 package com.qaprosoft.jenkins.jobdsl.factory.pipeline
 
+import com.qaprosoft.Logger
 @Grab('org.testng:testng:6.8.8')
 
 import org.testng.xml.Parser;
@@ -24,8 +25,8 @@ public class TestJobFactory extends PipelineFactory {
 		this.sub_project = sub_project
 		this.zafira_project = zafira_project
 		this.suitePath = suitePath
-		
 		this.suiteName = suiteName
+		Logger.setOutput(_dslFactory)
 	}
 	
 	def create() {
@@ -38,8 +39,7 @@ public class TestJobFactory extends PipelineFactory {
 		XmlSuite currentSuite = suiteXml.get(0)
 
 		this.name = currentSuite.getParameter("jenkinsJobName").toString()
-		_dslFactory.println("name: " + name)
-		
+		Logger.info("name: " + name)
 		def pipelineJob = super.create()
 		pipelineJob.with {
 
