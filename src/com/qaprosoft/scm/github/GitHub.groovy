@@ -1,5 +1,6 @@
 package com.qaprosoft.scm.github
 
+import com.qaprosoft.Logger
 import com.qaprosoft.scm.ISCM
 import com.qaprosoft.jenkins.pipeline.Configurator
 
@@ -8,6 +9,7 @@ class GitHub implements ISCM {
 	
 	public GitHub(context) {
 		this.context = context
+		Logger.setOutput(context)
 	}
 
     public def clone() {
@@ -16,7 +18,7 @@ class GitHub implements ISCM {
 
 	public def clone(isShallow) {
 		context.stage('Checkout GitHub Repository') {
-			context.println("GitHub->clone")
+			Logger.info("GitHub->clone")
 
 			def fork = parseFork(Configurator.get("fork"))
             def branch = Configurator.get("branch")
