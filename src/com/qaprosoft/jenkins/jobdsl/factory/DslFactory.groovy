@@ -14,13 +14,11 @@ public class DslFactory {
     DslFactory(dslFactory) {
         this._dslFactory = dslFactory
 		this.clazz = this.getClass().getCanonicalName()
-        Logger.setOutput(_dslFactory)
     }
 	
 	DslFactory() {
 		this._dslFactory = null
 		this.clazz = this.getClass().getCanonicalName()
-        Logger.setOutput(_dslFactory)
 	}
 
 
@@ -29,7 +27,6 @@ public class DslFactory {
 		this.name = name
 		this.description = description
 		this.clazz = this.getClass().getCanonicalName()
-        Logger.setOutput(_dslFactory)
 	}
 	
 	public String getFullName() {
