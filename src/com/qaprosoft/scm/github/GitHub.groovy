@@ -12,7 +12,7 @@ class GitHub implements ISCM {
 		this.context = context
 	}
 
-    protected Logger logger = new Logger(context)
+    //protected Logger logger = new Logger(context)
 
     public def clone() {
         clone(true)
