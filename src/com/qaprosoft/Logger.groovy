@@ -7,6 +7,7 @@ class Logger {
     private static out = System.out
 
     public static setOutput(out) {
+        System.out.println("Inited")
         this.out = out
     }
 
