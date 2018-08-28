@@ -6,7 +6,7 @@ class Logger {
     // Default standard output
     private static out = System.out
 
-    @NonCps
+    @NonCPS
     public static setOutput(out) {
         this.out = out
     }
