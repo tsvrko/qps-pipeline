@@ -1,5 +1,6 @@
 package com.qaprosoft.jenkins.pipeline
 
+import com.qaprosoft.Logger
 @Grab('org.testng:testng:6.8.8')
 import org.testng.xml.Parser;
 import org.testng.xml.XmlSuite;
@@ -25,6 +26,7 @@ public abstract class Executor {
 
 	public Executor(context) {
 		this.context = context
+        Logger.setOutput(this.context)
 	}
 	
 	protected clean() {

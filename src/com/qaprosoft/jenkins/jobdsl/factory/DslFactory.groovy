@@ -1,5 +1,7 @@
 package com.qaprosoft.jenkins.jobdsl.factory
 
+import com.qaprosoft.Logger
+
 public class DslFactory {
 	def folder
 	def name
@@ -12,11 +14,13 @@ public class DslFactory {
     DslFactory(dslFactory) {
         this._dslFactory = dslFactory
 		this.clazz = this.getClass().getCanonicalName()
+        Logger.setOutput(_dslFactory)
     }
 	
 	DslFactory() {
 		this._dslFactory = null
 		this.clazz = this.getClass().getCanonicalName()
+        Logger.setOutput(_dslFactory)
 	}
 
 
@@ -24,8 +28,8 @@ public class DslFactory {
 		this.folder = folder
 		this.name = name
 		this.description = description
-		
 		this.clazz = this.getClass().getCanonicalName()
+        Logger.setOutput(_dslFactory)
 	}
 	
 	public String getFullName() {
