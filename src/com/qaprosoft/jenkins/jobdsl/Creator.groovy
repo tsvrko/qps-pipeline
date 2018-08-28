@@ -6,13 +6,10 @@ import com.qaprosoft.Logger
 
 import groovy.json.*
 
-Logger.setOutput(this)
 def slurper = new JsonSlurper()
 
 String factoryDataMap = readFileFromWorkspace("factories.json")
 def prettyPrint = JsonOutput.prettyPrint(factoryDataMap)
-Logger.info("Logger in Creator")
-
 println("factoryDataMap: " + prettyPrint)
 def factories = new HashMap(slurper.parseText(factoryDataMap))
 
