@@ -1,10 +1,8 @@
 package com.qaprosoft.selenium.grid
 
-import com.qaprosoft.Logger
-import com.qaprosoft.jenkins.jobdsl.factory.DslFactory
 import groovy.json.JsonSlurper
 
-class ProxyInfo extends DslFactory{
+class ProxyInfo {
 
     def private static platformDeviceListMap = ["android":[], "ios":[]]
     def private static baseDeviceList = ["DefaultPool", "ANY"]
@@ -15,7 +13,6 @@ class ProxyInfo extends DslFactory{
         //TODO: reuse selenium host/port/protocol from env jobVars
 		def proxyInfoUrl = selenium + "/grid/admin/ProxyInfo"
         def deviceList = platformDeviceListMap.get(platform.toLowerCase())
-        Logger.info("Logger works!")
 		try {
             if (deviceList.size() == 0) {
                 def json = new JsonSlurper().parse(proxyInfoUrl.toURL())

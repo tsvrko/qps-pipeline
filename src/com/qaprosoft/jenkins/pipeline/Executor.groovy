@@ -4,7 +4,7 @@ package com.qaprosoft.jenkins.pipeline
 import org.testng.xml.Parser;
 import org.testng.xml.XmlSuite;
 import com.cloudbees.groovy.cps.NonCPS
-
+import com.qaprosoft.Logger
 import com.qaprosoft.scm.ISCM
 
 import java.nio.file.FileSystems
@@ -25,6 +25,7 @@ public abstract class Executor {
 
 	public Executor(context) {
 		this.context = context
+        Logger.setOutput(this.context)
 	}
 	
 	protected clean() {
