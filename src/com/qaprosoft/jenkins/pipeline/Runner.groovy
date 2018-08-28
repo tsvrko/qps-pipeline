@@ -5,7 +5,7 @@ import org.testng.xml.XmlSuite;
 
 import static java.util.UUID.randomUUID
 import com.qaprosoft.zafira.ZafiraClient
-
+import com.qaprosoft.Logger
 import com.qaprosoft.scm.github.GitHub
 
 class Runner extends Executor {
@@ -110,7 +110,8 @@ class Runner extends Executor {
 	public void runJob() {
 		context.println("Runner->runJob")
 		//use this method to override any beforeRunJob logic
-		beforeRunJob()
+        Logger.log("Logger works!")
+        beforeRunJob()
 		
         uuid = getUUID()
         String nodeName = "master"
