@@ -89,7 +89,9 @@ class Runner extends Executor {
 
     protected def parseFolderName() {
 		def folderName = ""
-		def workspace = this.getWorkspace();
+		def workspace = this.getWorkspace()
+		/* Case when path to job contains particle "jobs/"
+		/var/jenkins_home/jobs/Automation/jobs/Example-Job/workspace */
 		if (workspace.contains("jobs/")) {
 			def array = workspace.split("jobs/")
 			for (def i = 1; i < array.size() - 1; i++){
@@ -97,6 +99,8 @@ class Runner extends Executor {
 			}
 			folderName = folderName.replaceAll(".\$","")
 		} else {
+        /* The other way split by "/" to get last but one path directory
+		/var/jenkins_home/workspace/Automation/Example-Job */
 			def array = workspace.split("/")
 			folderName = array[array.size() - 2]
 		}
