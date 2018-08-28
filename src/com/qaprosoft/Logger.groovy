@@ -8,19 +8,19 @@ class Logger {
         this.out = out
     }
 
-    public static info(String message) {
+    public static info(message) {
         out.println(message)
     }
 
-    public static warn(String message) {
+    public static warn(message) {
         out.println(message)
     }
 
-    public static error(String message) {
+    public static error(message) {
         out.println(message)
     }
 
-    public static debug(String message) {
+    public static debug(message) {
         out.println(message)
     }
 }
