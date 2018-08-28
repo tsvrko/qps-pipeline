@@ -1,20 +1,26 @@
 package com.qaprosoft.selenium.grid
 
 import com.qaprosoft.Logger
+import com.qaprosoft.jenkins.jobdsl.factory.DslFactory
+
 import java.util.logging.Logger
 
-import groovy.json.JsonSlurper;
+import groovy.json.JsonSlurper
 
-class ProxyInfo {
+class ProxyInfo extends DslFactory{
 
-    def private static _dslFactory
+    ProxyInfo() {
+        _dslFactory = super._dslFactory
+    }
+
     def private static platformDeviceListMap = ["android":[], "ios":[]]
     def private static baseDeviceList = ["DefaultPool", "ANY"]
+    def private static _dslFactory
 
 	//TODO: reused grid/admin/ProxyInfo to get atual list of iOS/Android devices
 	public static List<String> getDevicesList(String selenium, String platform) {
-        Logger logger = Logger.getLogger('com.qaprosoft.selenium.grid.ProxyInfo')
-        logger.info("Logger works!")
+        Logger.setOutput(_dslFactory)
+        Logger.log("Logger works!")
         //TODO: reuse selenium host/port/protocol from env jobVars
 		def proxyInfoUrl = selenium + "/grid/admin/ProxyInfo"
         def deviceList = platformDeviceListMap.get(platform.toLowerCase())
