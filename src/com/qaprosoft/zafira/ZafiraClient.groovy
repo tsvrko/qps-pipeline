@@ -1,5 +1,6 @@
 package com.qaprosoft.zafira
 
+import com.qaprosoft.Logger
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import com.qaprosoft.jenkins.pipeline.Configurator
@@ -15,7 +16,7 @@ class ZafiraClient {
 		this.context = context
 		this.serviceURL = url
 		context.println("zafiraUrl: ${serviceURL}")
-
+		Logger.setOutput(context)
 		if (developMode) {
 			isAvailable = false
 		} else {
@@ -33,7 +34,7 @@ class ZafiraClient {
 		if (!isAvailable) {
 			return ""
 		}
-		context.println("accessToken: ${accessToken}")
+		Logger.info("accessToken: ${accessToken}")
 		def response = context.httpRequest contentType: 'APPLICATION_JSON', \
 			httpMode: 'POST', \
 			requestBody: "{\"refreshToken\": \"${accessToken}\"}", \
@@ -47,7 +48,7 @@ class ZafiraClient {
 		def type = properties.get("type")
 
 		this.token = "${type} ${authToken}"
-		//context.println("${this.token}")
+		Logger.debug("${this.token}")
 		return this.token
 	}
 
@@ -72,7 +73,7 @@ class ZafiraClient {
             url: this.serviceURL + "/api/tests/runs/queue"
 			
         String formattedJSON = JsonOutput.prettyPrint(response.content)
-        context.println("Queued TestRun: ${formattedJSON}")
+		Logger.info("Queued TestRun: ${formattedJSON}")
     }
 
 	public void smartRerun() {
@@ -98,8 +99,8 @@ class ZafiraClient {
 
 		def responseJson = new JsonSlurper().parseText(response.content)
 
-		context.println("Results : ${responseJson.size()}")
-		context.println("Tests for rerun : ${responseJson}")
+		Logger.info("Results : ${responseJson.size()}")
+		Logger.info("Tests for rerun : ${responseJson}")
 	}
 
 	public void abortZafiraTestRun(String uuid, String comment) {
@@ -139,8 +140,8 @@ class ZafiraClient {
 		contentType: 'APPLICATION_JSON', \
 		httpMode: 'GET', \
 			url: this.serviceURL + "/api/tests/runs/${uuid}/export"
-			
-		//context.println("exportZafiraReport response: ${response.content}")
+
+		Logger.debug("exportZafiraReport response: ${response.content}")
 		return response.content
 	}
 }
