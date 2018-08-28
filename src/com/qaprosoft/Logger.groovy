@@ -15,18 +15,22 @@ class Logger {
         this.out = out
     }
 
+    @NonCPS
     public static info(message) {
         out.println(message)
     }
 
+    @NonCPS
     public static warn(message) {
         out.println(message)
     }
 
+    @NonCPS
     public static error(message) {
         out.println(message)
     }
 
+    @NonCPS
     public static debug(message) {
         out.println(message)
     }
