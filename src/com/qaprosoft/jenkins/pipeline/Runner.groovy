@@ -110,7 +110,7 @@ class Runner extends Executor {
 	public void runJob() {
 		context.println("Runner->runJob")
 		//use this method to override any beforeRunJob logic
-        Logger.setOutput(context)
+        //Logger.setOutput(context)
         Logger.log("Logger works!")
         beforeRunJob()
 		
