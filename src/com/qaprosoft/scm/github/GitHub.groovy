@@ -7,12 +7,12 @@ import com.qaprosoft.jenkins.pipeline.Configurator
 class GitHub implements ISCM {
 
 	private def context
-    private def logger
-	
+
 	public GitHub(context) {
 		this.context = context
-		this.logger = new Logger(context)
 	}
+
+    protected Logger logger = new Logger(context)
 
     public def clone() {
         clone(true)
