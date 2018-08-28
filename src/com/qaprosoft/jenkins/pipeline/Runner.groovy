@@ -5,7 +5,7 @@ import org.testng.xml.XmlSuite;
 
 import static java.util.UUID.randomUUID
 import com.qaprosoft.zafira.ZafiraClient
-import com.qaprosoft.Logger
+
 import com.qaprosoft.scm.github.GitHub
 
 class Runner extends Executor {

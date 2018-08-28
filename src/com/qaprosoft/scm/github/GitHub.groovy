@@ -5,14 +5,11 @@ import com.qaprosoft.scm.ISCM
 import com.qaprosoft.jenkins.pipeline.Configurator
 
 class GitHub implements ISCM {
-
-	private def context
+	private def context;
 
 	public GitHub(context) {
 		this.context = context
 	}
-
-    //protected Logger logger = new Logger(context)
 
     public def clone() {
         clone(true)
@@ -21,6 +18,7 @@ class GitHub implements ISCM {
 	public def clone(isShallow) {
 		context.stage('Checkout GitHub Repository') {
             context.println "I am here"
+            Logger.setOutput(context)
 			Logger.info("GitHub->clone")
 
 			def fork = parseFork(Configurator.get("fork"))
@@ -73,7 +71,7 @@ class GitHub implements ISCM {
 
 	public def clone(gitUrl, branch, subFolder) {
 		context.stage('Checkout GitHub Repository') {
-            Logger.info("GitHub->clone")
+			context.println("GitHub->clone")
 			context.println("GIT_URL: " + gitUrl)
 			context.println("branch: " + branch)
             context.checkout getCheckoutParams(gitUrl, branch, subFolder, true, false)

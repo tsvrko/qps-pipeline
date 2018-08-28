@@ -1,7 +1,5 @@
 package com.qaprosoft.jenkins.pipeline
 
-import com.qaprosoft.Logger
-
 public class Configurator {
 
     private def context
@@ -17,7 +15,7 @@ public class Configurator {
     public Configurator(context) {
         this.context = context
         this.loadContext()
-        Logger.setOutput(context)
+
     }
 
     @NonCPS

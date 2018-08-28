@@ -2,7 +2,6 @@ package com.qaprosoft.zafira
 
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
-import com.qaprosoft.Logger
 import com.qaprosoft.jenkins.pipeline.Configurator
 
 class ZafiraClient {
@@ -15,8 +14,8 @@ class ZafiraClient {
 	public ZafiraClient(context, String url, Boolean developMode) {
 		this.context = context
 		this.serviceURL = url
-		Logger.setOutput(context)
-		Logger.info("zafiraUrl: ${serviceURL}")
+		context.println("zafiraUrl: ${serviceURL}")
+
 		if (developMode) {
 			isAvailable = false
 		} else {

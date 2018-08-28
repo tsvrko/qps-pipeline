@@ -1,6 +1,5 @@
 package com.qaprosoft.jenkins.jobdsl.factory.pipeline
 
-import com.qaprosoft.Logger
 @Grab('org.testng:testng:6.8.8')
 
 import org.testng.xml.Parser;
@@ -30,7 +29,7 @@ public class TestJobFactory extends PipelineFactory {
 	}
 	
 	def create() {
-		Logger.info("TestJobFactory->create")
+		_dslFactory.println("TestJobFactory->create")
 		def selenium = _dslFactory.binding.variables.QPS_HUB
 		def xmlFile = new Parser(suitePath)
 		xmlFile.setLoadClasses(false)
