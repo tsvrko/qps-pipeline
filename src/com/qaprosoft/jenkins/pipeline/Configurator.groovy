@@ -126,7 +126,7 @@ public class Configurator {
         }
 
 		for (var in vars) {
-            Logger.info(var)
+			context.println(var)
 		}
 
 		// 2. Load all job parameters into unmodifiable map
@@ -138,7 +138,7 @@ public class Configurator {
 		}
 		
 		for (param in params) {
-            Logger.info(param)
+			context.println(param)
 		}
 
 		//3. TODO: investigate how private pipeline can override those values
