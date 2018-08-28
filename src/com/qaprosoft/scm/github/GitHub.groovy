@@ -20,6 +20,7 @@ class GitHub implements ISCM {
 
 	public def clone(isShallow) {
 		context.stage('Checkout GitHub Repository') {
+            context.println "I am here"
 			Logger.info("GitHub->clone")
 
 			def fork = parseFork(Configurator.get("fork"))
