@@ -10,7 +10,7 @@ class Logger {
         this.out = out
     }
 
-    @NonCPS
+
     public static setOutput(out) {
         this.out = out
     }
