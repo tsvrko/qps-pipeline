@@ -1,6 +1,8 @@
 package com.qaprosoft.selenium.grid
 
 import com.qaprosoft.Logger
+import java.util.logging.Logger
+
 import groovy.json.JsonSlurper;
 
 class ProxyInfo {
@@ -11,8 +13,8 @@ class ProxyInfo {
 
 	//TODO: reused grid/admin/ProxyInfo to get atual list of iOS/Android devices
 	public static List<String> getDevicesList(String selenium, String platform) {
-        Logger.setOutput(_dslFactory)
-        Logger.log("Logger works!")
+        Logger logger = Logger.getLogger('com.qaprosoft.selenium.grid.ProxyInfo')
+        logger.info("Logger works!")
         //TODO: reuse selenium host/port/protocol from env jobVars
 		def proxyInfoUrl = selenium + "/grid/admin/ProxyInfo"
         def deviceList = platformDeviceListMap.get(platform.toLowerCase())
