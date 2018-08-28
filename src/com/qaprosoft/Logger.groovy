@@ -4,8 +4,11 @@ import com.cloudbees.groovy.cps.NonCPS
 
 class Logger {
     // Default standard output
-    private static out = System.out
+    private static out
 
+    Logger(out) {
+        this.out = out
+    }
     @NonCPS
     public static setOutput(out) {
         this.out = out
