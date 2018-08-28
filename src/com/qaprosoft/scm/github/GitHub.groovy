@@ -34,15 +34,15 @@ class GitHub implements ISCM {
 				//sample public carina-demo project should be cloned using https only!
 				gitUrl = "https://github.com/qaprosoft/carina-demo.git"
 			}
-			
-			context.println("GIT_URL: " + gitUrl)
-			//context.println("forked_repo: " + fork)
+
+            Logger.info("GIT_URL: " + gitUrl)
+            Logger.debug("forked_repo: " + fork)
 			if (!fork) {
 				context.checkout getCheckoutParams(gitUrl, branch, null, isShallow, true)
 			} else {
 
 				def token_name = 'token_' + "${userId}"
-				context.println("token_name: " + token_name)
+                Logger.info("token_name: " + token_name)
 				
 				//register into the Configurator.vars personal token of the current user
 				def token_value = context.env.getEnvironment().get(token_name)
@@ -55,7 +55,7 @@ class GitHub implements ISCM {
 				}
 				if (token_value != null) {
 					gitUrl = "https://${token_value}@${GITHUB_HOST}/${userId}/${project}"
-					context.println "fork repo url: ${gitUrl}"
+                    Logger.info("fork repo url: ${gitUrl}")
                     context.checkout getCheckoutParams(gitUrl, branch, null, isShallow, true)
 				} else {
 					throw new RuntimeException("Unable to run from fork repo as ${token_name} token is not registered on CI!")
@@ -71,9 +71,9 @@ class GitHub implements ISCM {
 
 	public def clone(gitUrl, branch, subFolder) {
 		context.stage('Checkout GitHub Repository') {
-			context.println("GitHub->clone")
-			context.println("GIT_URL: " + gitUrl)
-			context.println("branch: " + branch)
+            Logger.info("GitHub->clone")
+            Logger.info("GIT_URL: " + gitUrl)
+            Logger.info("branch: " + branch)
             context.checkout getCheckoutParams(gitUrl, branch, subFolder, true, false)
 		}
 	}

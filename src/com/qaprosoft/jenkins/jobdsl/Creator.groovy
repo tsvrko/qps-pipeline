@@ -1,7 +1,5 @@
 package com.qaprosoft.jenkins.jobdsl
 
-import com.qaprosoft.Logger
-
 // groovy script for initialization and execution all kind of jobdsl factories which are transfered from pipeline scanner script
 
 import groovy.json.*
