@@ -6,7 +6,6 @@ class Logger {
 
     public static setOutput(out) {
         this.out = out
-        this.out.println("Logger was inited")
     }
 
     public static info(message) {
