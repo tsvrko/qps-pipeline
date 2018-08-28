@@ -30,7 +30,7 @@ public class TestJobFactory extends PipelineFactory {
 	}
 	
 	def create() {
-		_dslFactory.println("TestJobFactory->create")
+		Logger.info("TestJobFactory->create")
 		def selenium = _dslFactory.binding.variables.QPS_HUB
 		def xmlFile = new Parser(suitePath)
 		xmlFile.setLoadClasses(false)
