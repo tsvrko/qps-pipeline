@@ -17,8 +17,7 @@ enum LogLevel {
 
     static def getIntLogLevel(levelName) {
         values().each { value ->
-            println(value.dump())
-            if(value.level == levelName) {
+            if(value.level.equals(levelName)) {
                 return value.intLevel
             }
         }
