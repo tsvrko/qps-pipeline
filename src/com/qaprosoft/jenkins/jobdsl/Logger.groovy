@@ -1,6 +1,5 @@
 package com.qaprosoft.jenkins.jobdsl
 
-import com.cloudbees.groovy.cps.NonCPS
 import com.qaprosoft.jenkins.pipeline.Configurator
 
 class Logger {
