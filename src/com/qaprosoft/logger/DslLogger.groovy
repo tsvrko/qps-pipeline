@@ -3,8 +3,8 @@ import com.qaprosoft.logger.LogLevel
 
 class DslLogger {
 
-    private static out
-    private static logLevel
+    private static def out
+    private static def logLevel
 
     public static setOutput(out) {
         this.out = out
