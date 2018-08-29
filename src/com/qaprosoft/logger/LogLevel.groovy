@@ -15,11 +15,13 @@ enum LogLevel {
         this.intLevel = intLevel
     }
 
-    static def getIntLogLevel(levelName) {
-        values().each { value ->
+    static int getIntLogLevel(levelName) {
+        int intLevel = 0
+        for(value in values()) {
             if(value.level.equals(levelName)) {
-                return value.intLevel
+                intLevel = value.intLevel
             }
         }
+        return intLevel
     }
 }
