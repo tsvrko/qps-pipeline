@@ -10,7 +10,7 @@ enum LogLevel {
     final def level
     final def intLevel
 
-    LogLevel(String level, int intLevel) {
+    LogLevel(level, intLevel) {
         this.level = level
         this.intLevel = intLevel
     }
