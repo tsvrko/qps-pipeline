@@ -1,5 +1,6 @@
 package com.qaprosoft.jenkins.pipeline
 
+import com.qaprosoft.Logger
 @Grab('org.testng:testng:6.8.8')
 import org.testng.xml.XmlSuite;
 
@@ -7,6 +8,7 @@ import static java.util.UUID.randomUUID
 import com.qaprosoft.zafira.ZafiraClient
 
 import com.qaprosoft.scm.github.GitHub
+import com.qaprosoft.Logger
 
 class Runner extends Executor {
 	//ci_run_id  param for unique test run identification

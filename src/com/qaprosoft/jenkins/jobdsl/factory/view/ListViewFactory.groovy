@@ -1,5 +1,6 @@
 package com.qaprosoft.jenkins.jobdsl.factory.view
 
+import com.qaprosoft.Logger
 import com.qaprosoft.jenkins.jobdsl.factory.DslFactory
 import groovy.transform.InheritConstructors
 
