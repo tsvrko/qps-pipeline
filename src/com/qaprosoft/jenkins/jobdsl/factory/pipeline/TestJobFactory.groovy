@@ -10,11 +10,6 @@ import groovy.transform.InheritConstructors
 
 @InheritConstructors
 public class TestJobFactory extends PipelineFactory {
-
-	{
-		DslLogger.setOutput(_dslFactory)
-	}
-
 	def project
 	def sub_project
 	def zafira_project
@@ -34,6 +29,7 @@ public class TestJobFactory extends PipelineFactory {
 	}
 	
 	def create() {
+		DslLogger.setOutput(_dslFactory)
 		_dslFactory.println("TestJobFactory->create")
 		def selenium = _dslFactory.binding.variables.QPS_HUB
 		def xmlFile = new Parser(suitePath)
