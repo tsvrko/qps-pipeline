@@ -31,14 +31,16 @@ class PipelineLogger {
 
     @NonCPS
     public static warn(message) {
-        if("WARN".equals(logLevel))
-        out.println(message)
+        if (logLevelMap.get(logLevel) >= logLevelMap.get("WARN")) {
+            out.println(message)
+        }
     }
 
     @NonCPS
     public static error(message) {
-        if("ERROR".equals(logLevel))
-        out.println(message)
+        if (logLevelMap.get(logLevel) >= logLevelMap.get("ERROR")) {
+            out.println(message)
+        }
     }
 
 }
