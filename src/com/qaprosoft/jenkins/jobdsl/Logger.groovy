@@ -1,15 +1,14 @@
 package com.qaprosoft.jenkins.jobdsl
 
-import com.qaprosoft.jenkins.pipeline.Configurator
-
 class Logger {
 
     private static out
-    private static logLevel = Configurator.get(Configurator.Parameter.PIPELINE_LOG_LEVEL)
 
     public static setOutput(out) {
         this.out = out
     }
+
+    private static logLevel = out.binding.variables.PIPELINE_LOG_LEVEL
 
     public static info(message) {
         if("INFO".equals(logLevel))
