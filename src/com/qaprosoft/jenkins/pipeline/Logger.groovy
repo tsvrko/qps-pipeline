@@ -10,6 +10,7 @@ class Logger {
     @NonCPS
     public static setOutput(out) {
         this.out = out
+        this.logLevel = Configurator.get(Configurator.Parameter.PIPELINE_LOG_LEVEL)
     }
 
     @NonCPS
