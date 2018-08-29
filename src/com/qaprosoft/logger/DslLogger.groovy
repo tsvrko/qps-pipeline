@@ -1,5 +1,4 @@
 package com.qaprosoft.logger
-import com.qaprosoft.logger.LogLevel
 
 class DslLogger {
 
