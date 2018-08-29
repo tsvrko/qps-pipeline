@@ -17,11 +17,18 @@ class PipelineLogger {
 
     @NonCPS
     public static debug(message) {
-        if (logLevelMap.get(logLevel) >= 400) {
+        if (logLevelMap.get(logLevel) >= logLevelMap.get("DEBUG")) {
             out.println(message)
         }
     }
-    
+
+    @NonCPS
+    public static info(message) {
+        if (logLevelMap.get(logLevel) >= logLevelMap.get("INFO")) {
+            out.println(message)
+        }
+    }
+
     @NonCPS
     public static warn(message) {
         if("WARN".equals(logLevel))
