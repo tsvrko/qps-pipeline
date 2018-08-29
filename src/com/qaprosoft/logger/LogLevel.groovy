@@ -7,8 +7,8 @@ enum LogLevel {
     WARN("WARN", 300),
     ERROR("INFO", 200)
 
-    final String level
-    int intLevel
+    final def level
+    final def intLevel
 
     LogLevel(String level, int intLevel) {
         this.level = level
