@@ -5,7 +5,7 @@ import com.cloudbees.groovy.cps.NonCPS
 class Logger {
 
     private static out
-    private static logLevel = Configurator.get(Configurator.Parameter.PIPELINE_LOG_LEVEL)
+    private static logLevel
 
     @NonCPS
     public static setOutput(out) {
