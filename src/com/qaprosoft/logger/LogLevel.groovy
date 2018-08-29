@@ -13,7 +13,19 @@ enum LogLevel {
     LogLevel(level, intLevel) {
         this.level = level
         this.intLevel = intLevel
+
+     }
+
+    @NonCPS
+    public String getLevel() {
+        return level
     }
+
+    @NonCPS
+    public int getIntLevel() {
+        return intLevel
+    }
+
 
     static int getIntLogLevelCps(levelName) {
         int intLevel = 0
