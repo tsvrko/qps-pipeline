@@ -1,4 +1,5 @@
 package com.qaprosoft.logger
+import com.qaprosoft.logger.LogLevel
 
 class DslLogger {
 
@@ -11,8 +12,9 @@ class DslLogger {
     }
 
     public static info(message) {
-        if("INFO".equals(logLevel))
-        out.println(message)
+        if (LogLevel.getIntLogLevel(logLevel) >= 400) {
+            out.println(message)
+        }
     }
 
     public static warn(message) {
