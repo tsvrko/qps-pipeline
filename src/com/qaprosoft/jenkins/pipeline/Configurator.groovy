@@ -1,7 +1,5 @@
 package com.qaprosoft.jenkins.pipeline
 
-import com.cloudbees.groovy.cps.NonCPS
-
 public class Configurator {
 
     private def context
