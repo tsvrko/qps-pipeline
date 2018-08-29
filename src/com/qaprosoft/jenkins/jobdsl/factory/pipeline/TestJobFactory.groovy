@@ -10,6 +10,11 @@ import groovy.transform.InheritConstructors
 
 @InheritConstructors
 public class TestJobFactory extends PipelineFactory {
+
+	{
+		DslLogger.setOutput(_dslFactory)
+	}
+
 	def project
 	def sub_project
 	def zafira_project
@@ -26,7 +31,6 @@ public class TestJobFactory extends PipelineFactory {
 		this.zafira_project = zafira_project
 		this.suitePath = suitePath
 		this.suiteName = suiteName
-        DslLogger.setOutput(_dslFactory)
 	}
 	
 	def create() {
