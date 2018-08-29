@@ -3,12 +3,12 @@ package com.qaprosoft.jenkins.jobdsl
 class Logger {
 
     private static out
+    private static logLevel
 
     public static setOutput(out) {
         this.out = out
+        this.logLevel = out.binding.variables.PIPELINE_LOG_LEVEL
     }
-
-    private static logLevel = out.binding.variables.PIPELINE_LOG_LEVEL
 
     public static info(message) {
         if("INFO".equals(logLevel))
