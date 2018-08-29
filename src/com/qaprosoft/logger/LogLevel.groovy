@@ -41,8 +41,8 @@ enum LogLevel {
     static int getIntLogLevelNonCps(levelName) {
         int intLevel = 0
         for(value in values()) {
-            if(value.level.equals(levelName)) {
-                intLevel = value.intLevel
+            if(value.getLevel().equals(levelName)) {
+                intLevel = value.getIntLevel()
             }
         }
         return intLevel
