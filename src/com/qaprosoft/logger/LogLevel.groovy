@@ -15,7 +15,7 @@ enum LogLevel {
         this.intLevel = intLevel
     }
 
-    static int getIntLogLevel(levelName) {
+    static int getIntLogLevelCps(levelName) {
         int intLevel = 0
         for(value in values()) {
             if(value.level.equals(levelName)) {
@@ -24,4 +24,16 @@ enum LogLevel {
         }
         return intLevel
     }
+
+    @NonCPS
+    static int getIntLogLevelNonCps(levelName) {
+        int intLevel = 0
+        for(value in values()) {
+            if(value.level.equals(levelName)) {
+                intLevel = value.intLevel
+            }
+        }
+        return intLevel
+    }
+
 }

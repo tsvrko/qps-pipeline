@@ -22,7 +22,7 @@ class PipelineLogger {
 
     @NonCPS
     public static info(message) {
-        if (LogLevel.getIntLogLevel(logLevel) >= 400) {
+        if (LogLevel.getIntLogLevelNonCps(logLevel) >= 400) {
             out.println(message)
         }
     }

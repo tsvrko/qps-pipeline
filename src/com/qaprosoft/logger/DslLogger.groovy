@@ -11,7 +11,7 @@ class DslLogger {
     }
 
     public static info(message) {
-        if (LogLevel.getIntLogLevel(logLevel) >= 400) {
+        if (LogLevel.getIntLogLevelCps(logLevel) >= 400) {
             out.println(message)
         }
     }
