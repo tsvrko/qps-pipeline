@@ -1,6 +1,6 @@
 package com.qaprosoft.scm.github
 
-import com.qaprosoft.Logger
+import com.qaprosoft.jenkins.pipeline.Logger
 import com.qaprosoft.scm.ISCM
 import com.qaprosoft.jenkins.pipeline.Configurator
 

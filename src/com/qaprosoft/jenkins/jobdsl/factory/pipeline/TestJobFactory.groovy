@@ -1,6 +1,6 @@
 package com.qaprosoft.jenkins.jobdsl.factory.pipeline
 
-import com.qaprosoft.Logger
+import com.qaprosoft.jenkins.jobdsl.Logger
 @Grab('org.testng:testng:6.8.8')
 
 import org.testng.xml.Parser;

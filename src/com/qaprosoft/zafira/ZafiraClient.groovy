@@ -1,6 +1,6 @@
 package com.qaprosoft.zafira
 
-import com.qaprosoft.Logger
+import com.qaprosoft.jenkins.pipeline.Logger
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import com.qaprosoft.jenkins.pipeline.Configurator

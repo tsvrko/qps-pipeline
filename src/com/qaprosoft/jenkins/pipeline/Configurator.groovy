@@ -1,7 +1,5 @@
 package com.qaprosoft.jenkins.pipeline
 
-//import com.qaprosoft.Logger
-
 public class Configurator {
 
     private def context
@@ -17,7 +15,7 @@ public class Configurator {
     public Configurator(context) {
         this.context = context
         this.loadContext()
-//        Logger.setOutput(context)
+        Logger.setOutput(context)
     }
 
     @NonCPS
@@ -129,8 +127,7 @@ public class Configurator {
         }
 
 		for (var in vars) {
-            context.println(var)
-//            Logger.info(var)
+            Logger.info(var)
 		}
 
 		// 2. Load all job parameters into unmodifiable map
@@ -142,8 +139,7 @@ public class Configurator {
 		}
 		
 		for (param in params) {
-            context.println(param)
-//            Logger.info(param)
+            Logger.info(param)
 		}
 
 		//3. TODO: investigate how private pipeline can override those values
