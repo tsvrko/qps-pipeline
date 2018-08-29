@@ -5,8 +5,9 @@ import com.qaprosoft.jenkins.pipeline.Configurator
 
 class PipelineLogger {
 
-    private static out
-    private static logLevel
+    private static def out
+    private static def logLevel
+    private static final def logLevelMap = ["DEBUG": 500, "INFO": 400, "WARN": 300, "ERROR": 200]
 
     @NonCPS
     public static setOutput(out) {
@@ -16,17 +17,11 @@ class PipelineLogger {
 
     @NonCPS
     public static debug(message) {
-        if("DEBUG".equals(logLevel))
-            out.println(message)
-    }
-
-    @NonCPS
-    public static info(message) {
-        if (LogLevel.getIntLogLevelNonCps(logLevel) >= 400) {
+        if (logLevelMap.get(logLevel) >= 400) {
             out.println(message)
         }
     }
-
+    
     @NonCPS
     public static warn(message) {
         if("WARN".equals(logLevel))

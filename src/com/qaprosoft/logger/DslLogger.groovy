@@ -4,6 +4,7 @@ class DslLogger {
 
     private static def out
     private static def logLevel
+    private static final def logLevelMap = ["DEBUG": 500, "INFO": 400, "WARN": 300, "ERROR": 200]
 
     public static setOutput(out) {
         this.out = out
@@ -11,7 +12,7 @@ class DslLogger {
     }
 
     public static info(message) {
-        if (LogLevel.getIntLogLevelCps(logLevel) >= 400) {
+        if (logLevelMap.get(logLevel) >= 400) {
             out.println(message)
         }
     }
