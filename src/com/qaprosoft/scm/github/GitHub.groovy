@@ -1,6 +1,6 @@
 package com.qaprosoft.scm.github
 
-import com.qaprosoft.jenkins.pipeline.Logger
+import com.qaprosoft.logger.PipelineLogger
 import com.qaprosoft.scm.ISCM
 import com.qaprosoft.jenkins.pipeline.Configurator
 
@@ -9,7 +9,7 @@ class GitHub implements ISCM {
 
 	public GitHub(context) {
 		this.context = context
-        Logger.setOutput(context)
+        PipelineLogger.setOutput(context)
 	}
 
     public def clone() {
@@ -19,7 +19,7 @@ class GitHub implements ISCM {
 	public def clone(isShallow) {
 		context.stage('Checkout GitHub Repository') {
 
-			Logger.info("GitHub->clone")
+			PipelineLogger.info("GitHub->clone")
 
 			def fork = parseFork(Configurator.get("fork"))
             def branch = Configurator.get("branch")
@@ -35,14 +35,14 @@ class GitHub implements ISCM {
 				gitUrl = "https://github.com/qaprosoft/carina-demo.git"
 			}
 
-            Logger.info("GIT_URL: " + gitUrl)
-            Logger.debug("forked_repo: " + fork)
+            PipelineLogger.info("GIT_URL: " + gitUrl)
+            PipelineLogger.debug("forked_repo: " + fork)
 			if (!fork) {
 				context.checkout getCheckoutParams(gitUrl, branch, null, isShallow, true)
 			} else {
 
 				def token_name = 'token_' + "${userId}"
-                Logger.info("token_name: " + token_name)
+                PipelineLogger.info("token_name: " + token_name)
 				
 				//register into the Configurator.vars personal token of the current user
 				def token_value = context.env.getEnvironment().get(token_name)
@@ -55,7 +55,7 @@ class GitHub implements ISCM {
 				}
 				if (token_value != null) {
 					gitUrl = "https://${token_value}@${GITHUB_HOST}/${userId}/${project}"
-                    Logger.info("fork repo url: ${gitUrl}")
+                    PipelineLogger.info("fork repo url: ${gitUrl}")
                     context.checkout getCheckoutParams(gitUrl, branch, null, isShallow, true)
 				} else {
 					throw new RuntimeException("Unable to run from fork repo as ${token_name} token is not registered on CI!")
@@ -71,9 +71,9 @@ class GitHub implements ISCM {
 
 	public def clone(gitUrl, branch, subFolder) {
 		context.stage('Checkout GitHub Repository') {
-            Logger.info("GitHub->clone")
-            Logger.info("GIT_URL: " + gitUrl)
-            Logger.info("branch: " + branch)
+            PipelineLogger.info("GitHub->clone")
+            PipelineLogger.info("GIT_URL: " + gitUrl)
+            PipelineLogger.info("branch: " + branch)
             context.checkout getCheckoutParams(gitUrl, branch, subFolder, true, false)
 		}
 	}

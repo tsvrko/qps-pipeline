@@ -1,6 +1,6 @@
-package com.qaprosoft.jenkins.jobdsl
+package com.qaprosoft.logger
 
-class Logger {
+class DslLogger {
 
     private static out
     private static logLevel

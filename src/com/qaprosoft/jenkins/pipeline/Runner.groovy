@@ -1,5 +1,6 @@
 package com.qaprosoft.jenkins.pipeline
 
+import com.qaprosoft.logger.PipelineLogger
 @Grab('org.testng:testng:6.8.8')
 import org.testng.xml.XmlSuite;
 
@@ -30,7 +31,7 @@ class Runner extends Executor {
 	public Runner(context) {
 		super(context)
 		scmClient = new GitHub(context)
-        Logger.setOutput(context)
+        PipelineLogger.setOutput(context)
 	}
 	
 	public void runCron() {
@@ -109,7 +110,7 @@ class Runner extends Executor {
     }
 
 	public void runJob() {
-		Logger.info("Runner->runJob")
+		PipelineLogger.info("Runner->runJob")
 		//use this method to override any beforeRunJob logic
 
         beforeRunJob()

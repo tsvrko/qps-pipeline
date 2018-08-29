@@ -1,6 +1,6 @@
 package com.qaprosoft.zafira
 
-import com.qaprosoft.jenkins.pipeline.Logger
+import com.qaprosoft.logger.PipelineLogger
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import com.qaprosoft.jenkins.pipeline.Configurator
@@ -16,7 +16,7 @@ class ZafiraClient {
 		this.context = context
 		this.serviceURL = url
 		context.println("zafiraUrl: ${serviceURL}")
-		Logger.setOutput(context)
+		PipelineLogger.setOutput(context)
 		if (developMode) {
 			isAvailable = false
 		} else {
@@ -34,7 +34,7 @@ class ZafiraClient {
 		if (!isAvailable) {
 			return ""
 		}
-		Logger.info("accessToken: ${accessToken}")
+		PipelineLogger.info("accessToken: ${accessToken}")
 		def response = context.httpRequest contentType: 'APPLICATION_JSON', \
 			httpMode: 'POST', \
 			requestBody: "{\"refreshToken\": \"${accessToken}\"}", \
@@ -48,7 +48,7 @@ class ZafiraClient {
 		def type = properties.get("type")
 
 		this.token = "${type} ${authToken}"
-		Logger.debug("${this.token}")
+		PipelineLogger.debug("${this.token}")
 		return this.token
 	}
 
@@ -73,7 +73,7 @@ class ZafiraClient {
             url: this.serviceURL + "/api/tests/runs/queue"
 			
         String formattedJSON = JsonOutput.prettyPrint(response.content)
-		Logger.info("Queued TestRun: ${formattedJSON}")
+		PipelineLogger.info("Queued TestRun: ${formattedJSON}")
     }
 
 	public void smartRerun() {
@@ -99,8 +99,8 @@ class ZafiraClient {
 
 		def responseJson = new JsonSlurper().parseText(response.content)
 
-		Logger.info("Results : ${responseJson.size()}")
-		Logger.info("Tests for rerun : ${responseJson}")
+		PipelineLogger.info("Results : ${responseJson.size()}")
+		PipelineLogger.info("Tests for rerun : ${responseJson}")
 	}
 
 	public void abortZafiraTestRun(String uuid, String comment) {
@@ -141,7 +141,7 @@ class ZafiraClient {
 		httpMode: 'GET', \
 			url: this.serviceURL + "/api/tests/runs/${uuid}/export"
 
-		Logger.debug("exportZafiraReport response: ${response.content}")
+		PipelineLogger.debug("exportZafiraReport response: ${response.content}")
 		return response.content
 	}
 }
