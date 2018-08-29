@@ -26,10 +26,10 @@ public class TestJobFactory extends PipelineFactory {
 		this.zafira_project = zafira_project
 		this.suitePath = suitePath
 		this.suiteName = suiteName
+        DslLogger.setOutput(_dslFactory)
 	}
 	
 	def create() {
-		DslLogger.setOutput(_dslFactory)
 		_dslFactory.println("TestJobFactory->create")
 		def selenium = _dslFactory.binding.variables.QPS_HUB
 		def xmlFile = new Parser(suitePath)
